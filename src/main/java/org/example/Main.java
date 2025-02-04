@@ -18,7 +18,9 @@ public class Main {
                         league.add(InputClass.insertClub(i));
                     }
                 case 2:
-                    for(int i=)
+                    for(int i=0; i<500; i++){
+                        PlayerList.add(InputClass.insertPlayer(i));
+                    }
             }
 
         }while(true);

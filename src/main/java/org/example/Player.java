@@ -1,6 +1,7 @@
 package org.example;
 
 public class Player {
+    int id;
     String firstName;
     String lastName;
     int age;
@@ -9,7 +10,7 @@ public class Player {
     String role;
     Club team;
 
-    public Player(String firstName, String lastName, int age, int overall, String role){
+    public Player(int id, String firstName, String lastName, int age, int overall, String role){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

@@ -20,7 +20,7 @@ public class InputClass {
         return new Club(squadName, id, riskMarketFactor);
     }
 
-    public static Player insertPlayer(){
+    public static Player insertPlayer(int id){
         String firstName;
         String lastName;
         int age;
@@ -45,7 +45,7 @@ public class InputClass {
         System.out.println("Insert the role of the player");
         role = sc.nextLine();
 
-        return new Player(firstName, lastName, age, overall, role);
+        return new Player(id, firstName, lastName, age, overall, role);
     }
 
     public static int menu(){

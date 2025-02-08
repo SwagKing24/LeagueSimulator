@@ -1,8 +1,8 @@
 package org.example;
 
 public class Club {
-    private String name;
     private int id;
+    private String name;
     private int budget;
     private int riskMarketFactor;
     private int ovrGK;
@@ -10,11 +10,15 @@ public class Club {
     private int ovrMF;
     private int ovrST;
 
-    public Club(String name, int id, int riskMarketFactor){
-        this.name = name;
+    public Club(int id, String name, int riskMarketFactor){
         this.id = id;
+        this.name = name;
         this.riskMarketFactor = riskMarketFactor;
         this.budget = 100;
+    }
+
+    public String getName(){
+        return (this.name);
     }
 
 

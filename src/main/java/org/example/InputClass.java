@@ -17,7 +17,7 @@ public class InputClass {
         aux = sc.nextLine();
         riskMarketFactor = Integer.parseInt(aux);
 
-        return new Club(squadName, id, riskMarketFactor);
+        return new Club(id, squadName, riskMarketFactor);
     }
 
     public static Player insertPlayer(int id){

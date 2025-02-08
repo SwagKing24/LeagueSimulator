@@ -1,0 +1,22 @@
+[
+  {"id": 1, "name": "Atalanta", "riskMarketFactor": 60 },
+  {"id": 2, "name": "Bologna", "riskMarketFactor": 50 },
+  {"id": 3, "name": "Cagliari", "riskMarketFactor": 40 },
+  {"id": 4, "name": "Empoli", "riskMarketFactor": 30 },
+  {"id": 5, "name": "Fiorentina", "riskMarketFactor": 55 },
+  {"id": 6, "name": "Frosinone", "riskMarketFactor": 20 },
+  {"id": 7, "name": "Genoa", "riskMarketFactor": 35 },
+  {"id": 8, "name": "Inter", "riskMarketFactor": 75 },
+  {"id": 9, "name": "Juventus", "riskMarketFactor": 80 },
+  {"id": 10, "name": "Lazio", "riskMarketFactor": 65 },
+  {"id": 11, "name": "Lecce", "riskMarketFactor": 30 },
+  {"id": 12, "name": "Milan", "riskMarketFactor": 70 },
+  {"id": 13, "name": "Monza", "riskMarketFactor": 45 },
+  {"id": 14, "name": "Napoli", "riskMarketFactor": 75 },
+  {"id": 15, "name": "Roma", "riskMarketFactor": 70 },
+  {"id": 16, "name": "Salernitana", "riskMarketFactor": 25 },
+  {"id": 17, "name": "Sassuolo", "riskMarketFactor": 40 },
+  {"id": 18, "name": "Torino", "riskMarketFactor": 55 },
+  {"id": 19, "name": "Udinese", "riskMarketFactor": 50 },
+  {"id": 20, "name": "Verona", "riskMarketFactor": 35 }
+]

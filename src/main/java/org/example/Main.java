@@ -15,12 +15,14 @@ public class Main {
             switch(choice){
                 case 1:
                     for (int i=0; i<20; i++){
-                        league.add(InputClass.insertClub(i));
+                        league = jsonTake.takeClubs();
                     }
+                    break;
                 case 2:
                     for(int i=0; i<500; i++){
                         PlayerList.add(InputClass.insertPlayer(i));
                     }
+                    break;
             }
 
         }while(true);

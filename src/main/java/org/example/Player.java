@@ -17,4 +17,8 @@ public class Player {
         this.overall = overall;
         this.role = role;
     }
+
+    private int getId(){
+        return this.id;
+    }
 }

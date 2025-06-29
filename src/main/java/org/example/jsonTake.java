@@ -32,4 +32,28 @@ public class jsonTake {
 
         return null;
     }
+
+    public static ArrayList<Player> takePlayers() {
+        ClassLoader classLoader = Main.class.getClassLoader();
+        URL resource = classLoader.getResource("dataPlayer.json");
+
+        if (resource == null) {
+            System.out.println("File non trovato!");
+        }
+
+        try (FileReader reader = new FileReader(resource.getFile())) {
+            Gson gson = new Gson();
+
+            Type listType = new TypeToken<ArrayList<Player>>(){}.getType();
+            ArrayList<Player> players = gson.fromJson(reader, listType);
+            return players;
+        } catch (IOException e) {
+            System.out.println("Errore nella lettura del file JSON");
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
 }

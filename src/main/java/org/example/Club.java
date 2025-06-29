@@ -5,6 +5,7 @@ public class Club {
     private String name;
     private int budget;
     private int riskMarketFactor;
+    private Player players;
     private int ovrGK;
     private int ovrDEF;
     private int ovrMF;

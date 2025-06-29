@@ -23,11 +23,11 @@ public class Main {
 
                         for(int j=0; j<25; j++){
                             if(j>=0 && j<=2){
-                                Player p = InputClass.createPlayer(league.get(i), "gk");
+                                Player p = InputClass.createPlayer(league.get(i), "gk", i*25+j);
                             }else if(j>=3 && j<=10){
-                                Player p = InputClass.createPlayer(league.get(i), "def");
+                                Player p = InputClass.createPlayer(league.get(i), "def", i*25+j);
                             }else if(j>=11 && j<=18){
-                                Player p = InputClass.createPlayer(league.get(i), "mid");
+                                Player p = InputClass.createPlayer(league.get(i), "mid", i*25+j);
                             }else if(j>=19 && j<=24){
                                 Player p = InputClass.createPlayer(league.get(i), "fwd", i*25+j);
                             }

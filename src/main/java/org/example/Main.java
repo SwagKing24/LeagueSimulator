@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -33,12 +34,34 @@ public class Main {
                             }
                             Player p = InputClass.createPlayer(league.getClubList().get(i), role, i*25+j);
                             PlayerList.add(p);
-
-
-
                         }
                     }
                     break;
+                case 3:
+                    if(league.getMatchday()<39) {
+                        if(league.getMatchesPlayed() == 10){
+                            league.setMatchday();
+                            league.resetMatchesPlayed();
+                        }
+
+                        LinkedHashMap<Integer, Club> clubList1 = league.getClubList();
+
+                        for(Integer i : clubList1.keySet()){
+                            if(clubList1.get(i).getHasPlayed()==false){
+                                clubList1.remove(i);
+                            }
+                        }
+                        int isq1 = (int)(Math.random()*clubList1.size());
+                        Club sq1 = clubList1.get(isq1);
+                        clubList1.remove(isq1);
+                        int isq2 = (int)(Math.random()*clubList1.size());
+                        Club sq2 = clubList1.get(isq2);
+                        clubList1.remove(isq2);
+
+
+
+                    }
+
             }
 
         }while(true);

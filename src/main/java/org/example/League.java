@@ -7,11 +7,13 @@ public class League {
     private LinkedHashMap<Integer, Club> clubList = new LinkedHashMap<>();
     private int matchday;
     private int season;
+    private int matchesPlayed; //number of matches played on the current matchday
 
     public League(LinkedHashMap<Integer, Club> cl){
-        this.matchday=0;
+        this.matchday=1;
         this.season=1;
         this.clubList = cl;
+        this.matchesPlayed = 0;
     }
 
     private void setClubList(LinkedHashMap<Integer, Club> cl){
@@ -22,9 +24,29 @@ public class League {
         return this.clubList;
     }
 
-    private int getMatchday(){
+    protected int getMatchday(){
         return this.matchday;
     }
+
+    protected int getMatchesPlayed(){
+        return this.matchesPlayed;
+    }
+
+    protected void setMatchesPlayed(){
+        this.matchesPlayed++;
+    }
+
+    protected void resetMatchesPlayed(){
+        this.matchesPlayed=0;
+    }
+
+    protected void setMatchday(){
+        this.matchday++;
+    }
+
+
+
+
 }
 
 

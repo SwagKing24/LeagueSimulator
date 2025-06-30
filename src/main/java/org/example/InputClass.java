@@ -100,7 +100,7 @@ public class InputClass {
         System.out.println("Make a choice\n");
 
         System.out.println("1) insert the clubs\n");
-        System.out.println("2) insert a player\n");
+        System.out.println("2) insert the players\n");
         System.out.println("3) simulate next match\n");
         System.out.println("4) simulate next matchday\n");
 

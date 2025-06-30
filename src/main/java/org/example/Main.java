@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         int choice;
-        ArrayList<Club> league = new ArrayList<>();
+        League league = null;
         ArrayList<Player> PlayerList = new ArrayList<>();
 
         do{
@@ -15,27 +15,28 @@ public class Main {
             switch(choice){
                 case 1:
                     for (int i=0; i<20; i++){
-                        league = jsonTake.takeClubs();
+                        league = new League(jsonTake.takeClubs());
                     }
                     break;
                 case 2:
                     for(int i=0; i<20; i++){
-
                         for(int j=0; j<25; j++){
+                            String role="";
                             if(j>=0 && j<=2){
-                                Player p = InputClass.createPlayer(league.get(i), "gk", i*25+j);
+                                role = "gk";
                             }else if(j>=3 && j<=10){
-                                Player p = InputClass.createPlayer(league.get(i), "def", i*25+j);
+                                role = "def";
                             }else if(j>=11 && j<=18){
-                                Player p = InputClass.createPlayer(league.get(i), "mid", i*25+j);
+                                role = "mid";
                             }else if(j>=19 && j<=24){
-                                Player p = InputClass.createPlayer(league.get(i), "fwd", i*25+j);
+                                role = "fwd";
                             }
+                            Player p = InputClass.createPlayer(league.getClubList().get(i), role, i*25+j);
+                            PlayerList.add(p);
 
 
 
                         }
-                        PlayerList.add(InputClass.insertPlayer(i));
                     }
                     break;
             }

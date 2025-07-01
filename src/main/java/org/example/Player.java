@@ -21,4 +21,8 @@ public class Player {
     private int getId(){
         return this.id;
     }
+
+    protected String getRole(){
+        return this.role;
+    }
 }

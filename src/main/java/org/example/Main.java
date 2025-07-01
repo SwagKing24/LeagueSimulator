@@ -34,6 +34,8 @@ public class Main {
                             }
                             Player p = InputClass.createPlayer(league.getClubList().get(i), role, i*25+j);
                             PlayerList.add(p);
+                            league.getClubList().get(i).addPlayer(p);
+
                         }
                     }
                     break;
@@ -44,19 +46,20 @@ public class Main {
                             league.resetMatchesPlayed();
                         }
 
-                        LinkedHashMap<Integer, Club> clubList1 = league.getClubList();
+                        LinkedHashMap<Integer, Club> clubListTemp = league.getClubList();
 
-                        for(Integer i : clubList1.keySet()){
-                            if(clubList1.get(i).getHasPlayed()==false){
-                                clubList1.remove(i);
+                        for(Integer i : clubListTemp.keySet()){
+                            if(clubListTemp.get(i).getHasPlayed()==false){
+                                clubListTemp.remove(i);
                             }
                         }
-                        int isq1 = (int)(Math.random()*clubList1.size());
-                        Club sq1 = clubList1.get(isq1);
-                        clubList1.remove(isq1);
-                        int isq2 = (int)(Math.random()*clubList1.size());
-                        Club sq2 = clubList1.get(isq2);
-                        clubList1.remove(isq2);
+                        int isq1 = (int)(Math.random()*clubListTemp.size());
+                        Club sq1 = clubListTemp.get(isq1);
+                        clubListTemp.remove(isq1);
+                        int isq2 = (int)(Math.random()*clubListTemp.size());
+                        Club sq2 = clubListTemp.get(isq2);
+                        clubListTemp.remove(isq2);
+                        Operation.playMatch(sq1, sq2);
 
 
 

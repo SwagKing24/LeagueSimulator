@@ -4,16 +4,99 @@ import java.util.ArrayList;
 
 public class Operation {
 
-    protected static void playMatch(Club sq1, Club sq2){
+    protected static void prepareMatch(Club sq1, Club sq2){
         ArrayList<Player>[] playersListSQ1 = sq1.getPlayers();
-        playersListSQ1 =  selectStarters(playersListSQ1, sq1);
+        ArrayList<Player>[] playersListSQ2 = sq2.getPlayers();
+        playersListSQ1 = selectStarters(playersListSQ1, sq1);
+        playersListSQ2 = selectStarters(playersListSQ2, sq2);
+        playMatch(playersListSQ1, playersListSQ2);
+
     }
 
     private static ArrayList[] selectStarters(ArrayList<Player>[] players, Club sq){
+        ArrayList<Player>[] lineup = players;
         String mod = sq.getModule();
-        int defNum = Integer.parseInt(mod.substring(0,1));
-        int midNum = Integer.parseInt(mod.substring(2,3));
-        int fwdNum = Integer.parseInt(mod.substring(4,5));
+        int[] numPlayers = {1, Integer.parseInt(mod.substring(0,1)), Integer.parseInt(mod.substring(2,3)), Integer.parseInt(mod.substring(4,5))};
+        for(int i=0; i<4; i++){
+            lineup[i].sort((o1, o2) -> {
+                if(o1.getOverall()>o2.getOverall()){
+                    return -1;
+                }else if (o1.getOverall()==o2.getOverall()){
+                    return 0;
+                }else return 1;
+            });
+            for(int j=lineup[i].size(); j>numPlayers[i]; j--){
+                lineup[i].removeLast();
+            }
+        }
+        return lineup;
+
     }
+
+    private static void playMatch(ArrayList<Player>[] sq1, ArrayList<Player>[] sq2){
+        double[][] sqOvr = calculateOvrClub(sq1, sq2);
+        double[][] chances = calculateChances(sqOvr);
+        int[] scoreBoard = new int[2];
+
+        for(int i=1; i<=90; i++){
+            if(chances[0][0]>Math.random()){
+                if(chances[0][1]>Math.random()){
+                    if(chances[0][2]>Math.random()){
+                        System.out.println("t1 arrivato a tiro");
+                    }
+                }
+            }
+
+            if(chances[1][0]>Math.random()){
+                if(chances[1][1]>Math.random()){
+                    if(chances[1][2]>Math.random()){
+                        System.out.println("t2 arrivato a tiro");
+                    }
+                }
+            }
+        }
+    }
+
+    private static double[][] calculateOvrClub(ArrayList<Player>[] sq1, ArrayList<Player>[] sq2){
+        double[][] sqOvr = new double[2][4];
+        int sum = 0;
+        for(int i=0; i<4; i++){
+            sum = 0;
+            for(int j=0; j<sq1[i].size(); j++){
+                sum += sq1[i].get(j).getOverall();
+            }
+            sqOvr[0][i] = (float) sum/sq1[i].size();
+        }
+
+        for(int i=0; i<4; i++){
+            sum = 0;
+            for(int j=0; j<sq2[i].size(); j++){
+                sum += sq2[i].get(j).getOverall();
+            }
+            sqOvr[1][i] = (float) sum/sq2[i].size();
+        }
+
+
+        return sqOvr;
+    }
+
+    private static double[][] calculateChances(double[][] sqOvr){
+        double[][] chances = new double[2][3];
+
+        for(int i=0; i<2; i++){
+            for(int j=1; j<4; j++){
+                if(j==1){
+                    chances[i][j-1] = (sqOvr[i][j]/(sqOvr[1-i][4-j]+sqOvr[i][j]))/5;
+                }else if(j==2){
+                    chances[i][j-1] = (sqOvr[i][j]/(sqOvr[1-i][4-j]+sqOvr[i][j]));
+                }else if(j==3){
+                    chances[i][j-1] = (sqOvr[i][j]/(sqOvr[1-i][4-j]+sqOvr[i][j]));
+                }
+            }
+        }
+
+        return chances;
+    }
+
 
 }

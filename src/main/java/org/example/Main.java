@@ -59,7 +59,7 @@ public class Main {
                         int isq2 = (int)(Math.random()*clubListTemp.size());
                         Club sq2 = clubListTemp.get(isq2);
                         clubListTemp.remove(isq2);
-                        Operation.playMatch(sq1, sq2);
+                        Operation.prepareMatch(sq1, sq2);
 
 
 

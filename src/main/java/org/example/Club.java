@@ -1,14 +1,13 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 public class Club {
     private int id;
     private String name;
     private int budget;
     private int riskMarketFactor;
-    private ArrayList<Player>[] playerList;
+    private ArrayList[] playerList;
     private int ovrGK;
     private int ovrDEF;
     private int ovrMF;

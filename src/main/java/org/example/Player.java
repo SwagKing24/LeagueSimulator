@@ -25,4 +25,8 @@ public class Player {
     protected String getRole(){
         return this.role;
     }
+
+    protected int getOverall(){
+        return this.overall;
+    }
 }

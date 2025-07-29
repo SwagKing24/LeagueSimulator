@@ -7,7 +7,7 @@ public class Club {
     private String name;
     private int budget;
     private int riskMarketFactor;
-    private ArrayList[] playerList;
+    private ArrayList<ArrayList<Player>> playerList;
     private int ovrGK;
     private int ovrDEF;
     private int ovrMF;
@@ -24,9 +24,9 @@ public class Club {
         this.hasPlayed = false;
         this.points = 0;
         this.module = module;
-        this.playerList = new ArrayList[4];
+        this.playerList = new ArrayList<>();
         for(int i=0; i<4; i++){
-            this.playerList[i] = new ArrayList<>();
+            this.playerList.add(new ArrayList<Player>());
         }
     }
 
@@ -43,26 +43,40 @@ public class Club {
         String r = p.getRole();
         switch (r){
             case "gk":
-                this.playerList[0].add(p);
+                this.playerList.get(0).add(p);
                 break;
             case "def":
-                this.playerList[1].add(p);
+                this.playerList.get(1).add(p);
                 break;
             case "mid":
-                this.playerList[2].add(p);
+                this.playerList.get(2).add(p);
                 break;
             case "fwd":
-                this.playerList[3].add(p);
+                this.playerList.get(3).add(p);
                 break;
         }
     }
 
-    protected ArrayList<Player>[] getPlayers(){
+    protected ArrayList<ArrayList<Player>> getPlayers(){
         return this.playerList;
     }
 
     protected String getModule(){
         return this.module;
+    }
+
+    protected String printClub(){
+        String s = Integer.toString(this.id);
+        s += this.name;
+        return s;
+    }
+
+    protected ArrayList<ArrayList<Player>> getPlayerList(){
+        return this.playerList;
+    }
+
+    protected void setPlayerList(ArrayList<ArrayList<Player>> playerList){
+        this.playerList = playerList;
     }
 
 

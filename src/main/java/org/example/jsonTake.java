@@ -30,9 +30,16 @@ public class jsonTake {
             LinkedHashMap<Integer, Club> clubMap = new LinkedHashMap<>();
             int cnt = 0;
             for (Club club : clubs) {
+                // Inizializza manualmente playerList
+                club.setPlayerList(new ArrayList<>());
+                for (int i = 0; i < 4; i++) {
+                    club.getPlayerList().add(new ArrayList<Player>());
+                }
+
                 clubMap.put(cnt, club);
                 cnt++;
             }
+
 
             return clubMap;
         } catch (IOException e) {

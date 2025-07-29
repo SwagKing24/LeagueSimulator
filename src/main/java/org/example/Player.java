@@ -11,6 +11,7 @@ public class Player {
     Club team;
 
     public Player(int id, String firstName, String lastName, int age, int overall, String role){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -28,5 +29,14 @@ public class Player {
 
     protected int getOverall(){
         return this.overall;
+    }
+
+    protected String printPlayer(){
+        String s = Integer.toString(this.id);
+        s += ": ";
+        s += this.firstName +"\n";
+        s += this.lastName +"\n";
+        s += this.role +"\n";
+        return s;
     }
 }

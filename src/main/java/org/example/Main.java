@@ -10,6 +10,7 @@ public class Main {
         int choice;
         League league = null;
         ArrayList<Player> PlayerList = new ArrayList<>();
+        int nextPlayerID = 0;
 
         do{
             choice = InputClass.menu();
@@ -32,9 +33,10 @@ public class Main {
                             }else if(j>=19 && j<=24){
                                 role = "fwd";
                             }
-                            Player p = InputClass.createPlayer(league.getClubList().get(i), role, i*25+j);
+                            Player p = InputClass.createPlayer(nextPlayerID, league.getClubList().get(i), role);
                             PlayerList.add(p);
                             league.getClubList().get(i).addPlayer(p);
+                            nextPlayerID++;
 
                         }
                     }
@@ -63,6 +65,24 @@ public class Main {
 
 
 
+                    }
+                    break;
+                case 5:
+                    for (int i=0; i<20; i++){
+                        System.out.println(league.getClubList().get(i).printClub());
+                    }
+                    break;
+                case 6:
+                    for(int i=0; i<20; i++){
+                        System.out.println(league.getClubList().get(i).getName());
+                        for(int j=0; j<4; j++){
+                            for(int x=0; x<league.getClubList().get(i).getPlayerList().size(); x++){
+                                for(int y=0; y<league.getClubList().get(i).getPlayerList().get(x).size(); y++){
+                                    System.out.println(league.getClubList().get(i).getPlayerList().get(x).get(y).printPlayer());
+                                }
+                            }
+
+                        }
                     }
 
             }

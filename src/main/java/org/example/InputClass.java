@@ -138,7 +138,6 @@ public class InputClass {
 
         aux = sc.nextLine();
         choice = Integer.parseInt(aux);
-
         return choice;
     }
 

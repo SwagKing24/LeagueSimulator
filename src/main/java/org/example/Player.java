@@ -39,4 +39,12 @@ public class Player {
         s += this.role +"\n";
         return s;
     }
+
+    protected String getFirstName(){
+        return this.firstName;
+    }
+
+    protected String getLastName(){
+        return this.lastName;
+    }
 }

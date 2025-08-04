@@ -3,18 +3,19 @@ package org.example;
 import java.util.ArrayList;
 
 public class Club {
-    private int id;
-    private String name;
-    private int budget;
-    private int riskMarketFactor;
+    private final int id;
+    private final String name;
+    private final int budget;
+    private final int riskMarketFactor;
     private ArrayList<ArrayList<Player>> playerList;
     private int ovrGK;
     private int ovrDEF;
     private int ovrMF;
     private int ovrST;
-    private boolean hasPlayed;
-    private int points;
-    private String module;
+    private final boolean hasPlayed;
+    private final int points;
+    private final String module;
+    private ArrayList<Integer> opponentsList;
 
     public Club(int id, String name, int riskMarketFactor, String module){
         this.id = id;
@@ -77,6 +78,10 @@ public class Club {
 
     protected void setPlayerList(ArrayList<ArrayList<Player>> playerList){
         this.playerList = playerList;
+    }
+
+    protected void setOpponentsList(ArrayList<Integer> opponentsList){
+        this.opponentsList = opponentsList;
     }
 
 

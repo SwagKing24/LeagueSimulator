@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class jsonTake {
-    public static LinkedHashMap<Integer, Club> takeClubs() {
+    public static ArrayList<Club> takeClubs() {
         ClassLoader classLoader = Main.class.getClassLoader();
         URL resource = classLoader.getResource("dataClubs.json");
 
@@ -27,7 +27,7 @@ public class jsonTake {
             ArrayList<Club> clubs = gson.fromJson(reader, listType);
 
 
-            LinkedHashMap<Integer, Club> clubMap = new LinkedHashMap<>();
+            ArrayList<Club> clubList = new ArrayList<>();
             int cnt = 0;
             for (Club club : clubs) {
                 // Inizializza manualmente playerList
@@ -36,12 +36,12 @@ public class jsonTake {
                     club.getPlayerList().add(new ArrayList<Player>());
                 }
 
-                clubMap.put(cnt, club);
+                clubList.add(club);
                 cnt++;
             }
 
 
-            return clubMap;
+            return clubList;
         } catch (IOException e) {
             System.out.println("Errore nella lettura del file JSON");
             e.printStackTrace();

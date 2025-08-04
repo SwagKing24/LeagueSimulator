@@ -10,51 +10,26 @@ public class Main {
         int choice;
         League league = null;
         ArrayList<Player> PlayerList = new ArrayList<>();
-        int nextPlayerID = 0;
-
+        ArrayList<Club> clubListTemp = new ArrayList<>();
+        for (int i=0; i<20; i++){
+            league = new League(jsonTake.takeClubs());
+        }
+        InputClass.insertInitialPlayers(PlayerList, league);
+        InputClass.insertFixtures(league.getClubList());
         do{
             choice = InputClass.menu();
             switch(choice){
                 case 1:
-                    for (int i=0; i<20; i++){
-                        league = new League(jsonTake.takeClubs());
-                    }
-                    break;
-                case 2:
-                    for(int i=0; i<20; i++){
-                        for(int j=0; j<25; j++){
-                            String role="";
-                            if(j>=0 && j<=2){
-                                role = "gk";
-                            }else if(j>=3 && j<=10){
-                                role = "def";
-                            }else if(j>=11 && j<=18){
-                                role = "mid";
-                            }else if(j>=19 && j<=24){
-                                role = "fwd";
-                            }
-                            Player p = InputClass.createPlayer(nextPlayerID, league.getClubList().get(i), role);
-                            PlayerList.add(p);
-                            league.getClubList().get(i).addPlayer(p);
-                            nextPlayerID++;
-
-                        }
-                    }
-                    break;
-                case 3:
                     if(league.getMatchday()<39) {
-                        if(league.getMatchesPlayed() == 10){
+                        if(league.getMatchesPlayed() == 0){
+
+                            clubListTemp = new ArrayList<>(league.getClubList());
+                        }else if(league.getMatchesPlayed() == 10){
                             league.setMatchday();
                             league.resetMatchesPlayed();
+                            break;
                         }
 
-                        LinkedHashMap<Integer, Club> clubListTemp = league.getClubList();
-
-                        for(Integer i : clubListTemp.keySet()){
-                            if(clubListTemp.get(i).getHasPlayed()==false){
-                                clubListTemp.remove(i);
-                            }
-                        }
                         int isq1 = (int)(Math.random()*clubListTemp.size());
                         Club sq1 = clubListTemp.get(isq1);
                         clubListTemp.remove(isq1);
@@ -62,28 +37,27 @@ public class Main {
                         Club sq2 = clubListTemp.get(isq2);
                         clubListTemp.remove(isq2);
                         Operation.prepareMatch(sq1, sq2);
+                        league.setMatchesPlayed();
 
 
 
                     }
+
                     break;
-                case 5:
+                case 2:
                     for (int i=0; i<20; i++){
                         System.out.println(league.getClubList().get(i).printClub());
                     }
                     break;
-                case 6:
-                    for(int i=0; i<20; i++){
-                        System.out.println(league.getClubList().get(i).getName());
-                        for(int j=0; j<4; j++){
-                            for(int x=0; x<league.getClubList().get(i).getPlayerList().size(); x++){
-                                for(int y=0; y<league.getClubList().get(i).getPlayerList().get(x).size(); y++){
-                                    System.out.println(league.getClubList().get(i).getPlayerList().get(x).get(y).printPlayer());
-                                }
+                case 3:
+                    for(Club c : league.getClubList()){
+                        for(ArrayList<Player> roleList : c.getPlayers()){
+                            for(Player p : roleList){
+                                System.out.println(p.printPlayer());
                             }
-
                         }
                     }
+                    break;
 
             }
 

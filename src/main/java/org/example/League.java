@@ -1,26 +1,27 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 
 public class League {
-    private LinkedHashMap<Integer, Club> clubList = new LinkedHashMap<>();
+    private ArrayList<Club> clubList = new ArrayList<>();
     private int matchday;
-    private int season;
+    private final int season;
     private int matchesPlayed; //number of matches played on the current matchday
 
-    public League(LinkedHashMap<Integer, Club> cl){
+    public League(ArrayList<Club> cl){
         this.matchday=1;
         this.season=1;
         this.clubList = cl;
         this.matchesPlayed = 0;
     }
 
-    private void setClubList(LinkedHashMap<Integer, Club> cl){
+    private void setClubList(ArrayList<Club> cl){
         this.clubList = cl;
     }
 
-    protected LinkedHashMap<Integer, Club> getClubList(){
+    protected ArrayList<Club> getClubList(){
         return this.clubList;
     }
 

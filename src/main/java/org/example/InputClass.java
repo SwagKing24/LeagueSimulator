@@ -90,8 +90,7 @@ public class InputClass {
         int righeTotali = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/lastNames.txt"))) {
-            String riga;
-            while ((riga = br.readLine()) != null) {
+            while ((br.readLine()) != null) {
                 righeTotali++;
             }
         } catch (IOException e) {
